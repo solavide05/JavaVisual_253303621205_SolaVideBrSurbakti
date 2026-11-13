@@ -137,9 +137,6 @@ Dokumen analisis TP5/AP6 berisi pembahasan mengenai:
 **Nama:** Sola Vide Br Surbakti  
 **NIM:** 253303621205  
 **Program Studi:** Sistem Informasi  
-**Universitas:** Universitas Prima Indonesia (UNPRI)  
-**Mata Kuliah:** Java Visual  
-**Tahun:** 2026
 
 ### 1. Deskripsi Tugas
 
@@ -185,3 +182,152 @@ Program dimulai dari `Main.java` yang membuat objek `CharacterManager` dan menam
 Link dokumentasi analisis TP8:
 
 **[https://docs.google.com/document/d/1ct5SbuOqSsYrn_hertWTJ1UMrrBfuYeYlrg1OF0CHOM/edit?usp=sharing]**
+
+---
+
+## TP10 AP13 – Character Manager Sprint #4
+
+## Theming, Properti Komponen & Analisis MVC
+
+**Nama:** Sola Vide Br Surbakti  
+**NIM:** 253303621205  
+
+## 1. Deskripsi Pengembangan
+
+Pada TP10 AP13, proyek Character Manager dikembangkan dengan menambahkan pengaturan tema atau *theming* menggunakan Java Swing.
+
+Pengembangan ini bertujuan membuat tampilan aplikasi lebih menarik, rapi, dan konsisten. Pengaturan warna, font, dan border dipisahkan ke dalam class `AppTheme`, sedangkan class `MainWindow` bertugas menerapkan pengaturan tersebut pada komponen GUI.
+
+Tugas ini merupakan lanjutan dari pengembangan Character Manager pada tugas sebelumnya.
+
+## 2. Fitur yang Ditambahkan
+
+Beberapa fitur yang dikembangkan pada tugas ini adalah:
+
+1. **AppTheme:** Mengatur warna, font, dan border aplikasi secara terpusat.
+2. **Role-Based Color:** Setiap karakter memiliki warna kartu berdasarkan role.
+3. **High Level Highlight:** Karakter dengan level minimal 5 mendapatkan teks berwarna emas dan tebal.
+4. **Tooltip:** Menampilkan informasi tambahan karakter ketika kursor diarahkan ke kartu.
+5. **Cursor:** Mengubah bentuk kursor menjadi tangan ketika diarahkan ke kartu karakter.
+6. **Pengaturan Ukuran Window:** Menggunakan `pack()` dan `setMinimumSize()` agar ukuran jendela menyesuaikan isi aplikasi.
+
+## 3. Implementasi AppTheme
+
+Class `AppTheme` dibuat pada package:
+
+`com.unpri.charactermanager.view`
+
+Class ini berfungsi sebagai pusat pengaturan tampilan aplikasi.
+
+### A. Pengaturan Warna
+
+| Komponen | Warna |
+| --- | --- |
+| Background utama | Gelap (#13131f) |
+| Teks utama | Abu-abu terang (#dfe6e9) |
+| Teks putih | Putih (#FFFFFF) |
+| Highlight level tinggi | Emas (#fdcb6e) |
+| Warrior | Merah (#d63031) |
+| Mage | Biru (#0984e3) |
+| Archer | Hijau (#00b894) |
+| Healer | Ungu (#7950a1) |
+
+### B. Pengaturan Font
+
+AppTheme menyediakan tiga jenis font:
+
+- `FONT_TITLE`: Untuk judul aplikasi.
+- `FONT_BODY`: Untuk informasi karakter.
+- `FONT_MONO`: Untuk informasi rata-rata level.
+
+### C. Pengaturan Border
+
+Terdapat dua jenis border yang digunakan:
+
+- `CARD_BORDER`: Memberikan jarak pada bagian dalam kartu karakter.
+- `MAIN_PANEL_BORDER`: Memberikan jarak pada panel utama aplikasi.
+
+### D. Method colorFor()
+
+Method `colorFor()` digunakan untuk menentukan warna kartu berdasarkan jenis karakter atau `CharacterType`.
+
+Dengan method ini, setiap role memiliki warna yang berbeda sehingga pengguna lebih mudah mengenali jenis karakter.
+
+## 4. Highlight Level Tinggi
+
+Pada tugas ini ditambahkan konstanta `HIGH_LEVEL_THRESHOLD = 5`.
+
+Konstanta tersebut digunakan sebagai batas untuk menentukan karakter dengan level tinggi.
+
+Ketentuannya:
+
+- **Level 5 atau lebih:** teks berwarna emas dan tebal.
+- **Level di bawah 5:** teks berwarna putih dengan font normal.
+
+Penggunaan konstanta membuat program lebih mudah diatur karena batas level dapat diubah dari satu tempat.
+
+## 5. Properti Komponen Tambahan
+
+Dua properti tambahan yang diterapkan pada komponen `JLabel` adalah:
+
+### A. `setToolTipText()`
+
+Properti ini digunakan untuk menampilkan informasi tambahan ketika kursor diarahkan ke kartu karakter.
+
+Informasi yang ditampilkan berupa deskripsi role, HP, dan Attack Power.
+
+### B. `setCursor()`
+
+Properti ini digunakan untuk mengubah bentuk kursor menjadi tangan ketika diarahkan ke kartu karakter.
+
+Tujuannya adalah memberikan tampilan yang lebih interaktif dan memberikan petunjuk visual kepada pengguna.
+
+## 6. Screenshot Hasil Pengembangan
+
+### A. Tampilan Sebelum Theming – Versi 0.3
+
+Masukkan screenshot aplikasi sebelum menggunakan pengaturan tema AppTheme.
+
+**Screenshot:** `![alt text](image.png)`
+
+### B. Tampilan Setelah Theming – Versi 0.4
+
+Masukkan screenshot aplikasi setelah menerapkan pengaturan warna, font, border, dan highlight level tinggi.
+
+**Screenshot:** `![alt text](image-1.png)`
+
+## 7. Analisis MVC
+
+Dalam pengembangan ini, pengaturan warna dan tampilan aplikasi diletakkan pada package `view`, bukan pada package `model`.
+
+Hal tersebut dilakukan karena warna dan font merupakan bagian dari tampilan aplikasi, sedangkan Model bertugas mengelola data karakter seperti nama, role, level, HP, dan Attack Power.
+
+Jika pengaturan tampilan dimasukkan ke dalam Model, beberapa masalah dapat muncul:
+
+1. Model menjadi bergantung pada komponen tampilan sehingga pemisahan tanggung jawab tidak berjalan dengan baik.
+2. Perubahan desain aplikasi dapat mengharuskan perubahan pada class Model.
+3. Kode menjadi lebih sulit dipelihara dan dikembangkan.
+
+Dengan memisahkan pengaturan tema ke dalam `AppTheme`, struktur program menjadi lebih rapi dan sesuai dengan prinsip MVC.
+
+## 8. Kesimpulan
+
+Melalui TP10 AP13, aplikasi Character Manager dikembangkan dengan menerapkan pengaturan tema menggunakan class `AppTheme`.
+
+Penggunaan pengaturan warna, font, dan border secara terpusat membuat tampilan aplikasi lebih konsisten. Penambahan warna berdasarkan role, highlight level tinggi, tooltip, dan perubahan cursor juga membuat aplikasi lebih informatif dan interaktif.
+
+Dari tugas ini, saya memahami pentingnya pemisahan tanggung jawab antara Model dan View serta cara mengatur tampilan komponen menggunakan Java Swing.
+
+## 9. Dokumentasi Google Docs
+
+**Link Google Docs Analisis TP10 AP13:**
+
+[https://docs.google.com/document/d/1f0AGbX5CmvIExIArvPiFdHsDTVPT0gQypivJVb7lwlg/edit?usp=sharing]
+
+## 10. Repository GitHub
+
+**Link Repository:**
+
+[https://github.com/solavide05/JavaVisual_253303621205_SolaVideBrSurbakti.git]
+
+---
