@@ -12,40 +12,49 @@ public class Main {
 
         CharacterManager manager = new CharacterManager();
 
-        // Tiga karakter dari tugas sebelumnya
+        // Delapan karakter untuk TP12 AP16
+
         manager.addCharacter(
-            new Character("Arjuna", CharacterType.WARRIOR, 5)
+                new Character("Arjuna", CharacterType.WARRIOR, 5)
         );
 
         manager.addCharacter(
-            new Character("Merlin", CharacterType.MAGE, 3)
+                new Character("Merlin", CharacterType.MAGE, 3)
         );
 
         manager.addCharacter(
-            new Character("Athena", CharacterType.ARCHER, 4)
-        );
-
-        // Dua karakter tambahan untuk TP8
-        manager.addCharacter(
-            new Character("Lancelot", CharacterType.WARRIOR, 7)
+                new Character("Athena", CharacterType.ARCHER, 4)
         );
 
         manager.addCharacter(
-            new Character("Freya", CharacterType.HEALER, 6)
+                new Character("Lancelot", CharacterType.WARRIOR, 7)
         );
 
-        // Mengambil data dari Model
+        manager.addCharacter(
+                new Character("Freya", CharacterType.HEALER, 6)
+        );
+
+        manager.addCharacter(
+                new Character("Gandalf", CharacterType.MAGE, 9)
+        );
+
+        manager.addCharacter(
+                new Character("Robin", CharacterType.ARCHER, 2)
+        );
+
+        manager.addCharacter(
+                new Character("Leonidas", CharacterType.WARRIOR, 10)
+        );
+
+        // Mengambil data karakter dari Model
         ArrayList<Character> characterList =
-            manager.getAllCharacters();
-
-        double averageLevel =
-            manager.getAverageLevel();
+                manager.getAllCharacters();
 
         // Menjalankan GUI melalui Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
 
             MainWindow window =
-                new MainWindow(characterList, averageLevel);
+                    new MainWindow(characterList);
 
             window.setVisible(true);
         });
