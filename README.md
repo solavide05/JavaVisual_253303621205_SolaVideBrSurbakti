@@ -331,3 +331,134 @@ Dari tugas ini, saya memahami pentingnya pemisahan tanggung jawab antara Model d
 [https://github.com/solavide05/JavaVisual_253303621205_SolaVideBrSurbakti.git]
 
 ---
+TP12 – Character Manager Sprint #5
+
+Layout, UI Responsif & Analisis MVC
+
+Mata Kuliah: Java Visual
+Nama: Sola Vide Br Surbakti
+NIM: 253303621205
+
+1. Deskripsi Proyek
+
+Pada TP12/AP16, aplikasi Character Manager dikembangkan dari versi sebelumnya, yaitu v0.4 menjadi v0.5. Pengembangan ini berfokus pada pengaturan tata letak menggunakan Layout Manager pada Java Swing.
+
+Pada versi sebelumnya, seluruh komponen ditampilkan menggunakan satu GridLayout. Pada versi terbaru, tampilan dibagi menjadi beberapa bagian agar lebih terstruktur dan mudah digunakan ketika ukuran jendela berubah.
+
+Aplikasi ini menampilkan delapan karakter dengan role yang berbeda, yaitu Warrior, Mage, Archer, dan Healer.
+
+### 2. Wireframe / Rancangan Tampilan
+
+Rancangan susunan komponen aplikasi:
+
+```text
++------------------------------------------------------+
+|                    HEADER                            |
+| DAFTAR KARAKTER                    Total: 8 karakter |
+|------------------------------------------------------|
+| PANEL STATISTIK                                      |
+| Jumlah karakter | Jumlah role                        |
+| Level tertinggi | Rata-rata level                    |
+|------------------------------------------------------|
+|                                      |               |
+|              DAFTAR                  |   LEGENDA     |
+|              KARAKTER                |   ROLE        |
+|                                      |               |
+|  Arjuna - WARRIOR                    |   WARRIOR     |
+|  Merlin - MAGE                       |   MAGE        |
+|  Athena - ARCHER                     |   ARCHER      |
+|  Lancelot - WARRIOR                  |   HEALER      |
+|  Freya - HEALER                      |               |
+|  Gandalf - MAGE                      |               |
+|  Robin - ARCHER                      |               |
+|  Leonidas - WARRIOR                  |               |
+|                                      |               |
+|------------------------------------------------------|
+| STATUS: 8 karakter | Siap                      v0.5 |
++------------------------------------------------------+
+```
+
+### 3. Implementasi Layout Manager
+
+Aplikasi menggunakan beberapa Layout Manager dengan fungsi berbeda:
+
+| Komponen | Layout Manager | Fungsi |
+| --- | --- | --- |
+| MainWindow | BorderLayout | Membagi tampilan utama |
+| Header | BorderLayout | Mengatur judul |
+| Panel Statistik | GridLayout | Menampilkan statistik |
+| Daftar Karakter | GridLayout | Menyusun kartu |
+| JScrollPane | JScrollPane | Menggulir daftar |
+| Legenda | BoxLayout Y_AXIS | Menyusun role |
+| Status Bar | BorderLayout | Menampilkan status |
+
+### 4. Penjelasan Nested Panels
+
+Aplikasi menggunakan beberapa panel yang disusun secara bertingkat atau nested panels. Panel utama menggunakan BorderLayout untuk mengatur header, daftar karakter, legenda, dan status bar. Di dalam header terdapat panel judul dan panel statistik yang memiliki layout masing-masing. Daftar karakter juga ditempatkan di dalam panel pembungkus sebelum dimasukkan ke JScrollPane. Susunan bertingkat ini membuat setiap bagian dapat diatur secara terpisah tanpa membuat kode tampilan menjadi berantakan.
+
+### 5. Panel Tambahan
+
+Panel statistik menampilkan:
+
+- Jumlah karakter.
+- Jumlah role.
+- Level tertinggi.
+- Rata-rata level.
+
+GridLayout dipilih karena empat informasi statistik perlu disusun secara teratur dalam dua baris dan dua kolom. Alternatif seperti FlowLayout tidak dipilih karena susunan komponen dapat berubah mengikuti ruang yang tersedia sehingga tampilan statistik kurang konsisten.
+
+### 6. Penggunaan JScrollPane
+
+Daftar karakter ditempatkan di dalam JScrollPane agar pengguna tetap dapat melihat seluruh karakter meskipun ukuran jendela diperkecil.
+
+Kartu karakter ditambahkan ke JPanel, bukan langsung ke JScrollPane. JPanel tersebut kemudian dimasukkan ke dalam JScrollPane. Cara ini memudahkan pengaturan susunan kartu dan memungkinkan pengguna menggulir daftar ketika ruang tampilan tidak mencukupi.
+
+### 5. Pengujian Responsif
+
+Pengujian dilakukan dengan mengubah ukuran jendela aplikasi menjadi tiga kondisi.
+
+| Ukuran | Hasil | Keterangan |
+| --- | --- | --- |
+| Awal | Normal | Tampilan awal |
+| Lebar | Normal | Tampilan lebih luas |
+| Kecil | Scrollbar muncul | Daftar dapat digulir |
+
+### 8. Dokumentasi Screenshot
+
+### Screenshot 1 – Ukuran Awal
+
+![Screenshot ukuran awal](![alt text](image.png))
+
+### Screenshot 2 – Ukuran Lebar
+
+![Screenshot jendela diperlebar](![alt text](image.png))
+
+### Screenshot 3 – Ukuran Kecil
+
+![Screenshot jendela diperkecil](![alt text](image-1.png))
+
+### 9. Analisis MVC
+
+Penerapan MVC tetap dipertahankan dalam proyek ini.
+
+- **Model:** Menyimpan dan mengelola data karakter melalui Character, CharacterType, dan CharacterManager.
+- **View:** Menampilkan data karakter melalui MainWindow dan mengatur tampilan menggunakan Java Swing.
+- **Controller:** Main.java menjadi titik awal aplikasi yang mengambil data dari CharacterManager dan meneruskannya ke MainWindow.
+
+Kode pengaturan tampilan ditempatkan pada package view agar Model tidak bergantung pada komponen antarmuka Java Swing.
+
+### 10. Kesimpulan
+
+Melalui TP12/AP16, aplikasi Character Manager berhasil dikembangkan dengan menggunakan beberapa Layout Manager. BorderLayout digunakan sebagai susunan utama, GridLayout untuk daftar karakter dan statistik, BoxLayout untuk legenda, serta JScrollPane untuk mendukung daftar yang dapat digulir.
+
+Penggunaan layout manager membuat tampilan lebih terstruktur dan lebih mudah menyesuaikan ukuran jendela. Pemisahan Model dan View juga membantu menjaga struktur program agar lebih mudah dikembangkan.
+
+### 11. Link Google Docs
+
+**Dokumen Analisis TP12/AP16:**  
+[https://docs.google.com/document/d/1-Ig-e7cagGknA0k38II8yDf719_S-oiAABWh1lH1Ovk/edit?usp=sharing]
+
+---
+
+**Repository GitHub:**  
+[Repository GitHub Character Manager](https://github.com/solavide05/JavaVisual_253303621205_SolaVideBrSurbakti.git)
