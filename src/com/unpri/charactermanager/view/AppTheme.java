@@ -25,6 +25,13 @@ public final class AppTheme {
     public static final Color GOLD =
             Color.decode("#fdcb6e");
 
+    public static final Color BG_STATUS =
+            Color.decode("#0d0d1a");
+
+    public static final Color TEXT_MUTED =
+            Color.decode("#9d9dbf");
+
+
     // ==============================
     // FONT APLIKASI
     // ==============================
@@ -38,6 +45,7 @@ public final class AppTheme {
     public static final Font FONT_MONO =
             new Font("Monospaced", Font.PLAIN, 13);
 
+
     // ==============================
     // BORDER APLIKASI
     // ==============================
@@ -48,15 +56,21 @@ public final class AppTheme {
     public static final Border MAIN_PANEL_BORDER =
             BorderFactory.createEmptyBorder(16, 16, 16, 16);
 
+
     // ==============================
     // BATAS LEVEL TINGGI
     // ==============================
 
     public static final int HIGH_LEVEL_THRESHOLD = 5;
 
-    // Constructor private
+
+    // ==============================
+    // CONSTRUCTOR PRIVATE
+    // ==============================
+
     private AppTheme() {
     }
+
 
     // ==============================
     // WARNA BERDASARKAN ROLE
@@ -71,6 +85,7 @@ public final class AppTheme {
             case HEALER -> Color.decode("#7950a1");
         };
     }
+
 
     // ==============================
     // DESKRIPSI BERDASARKAN ROLE
