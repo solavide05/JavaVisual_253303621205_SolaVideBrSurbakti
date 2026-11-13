@@ -2,7 +2,9 @@
 import com.unpri.charactermanager.model.Character;
 import com.unpri.charactermanager.model.CharacterManager;
 import com.unpri.charactermanager.model.CharacterType;
+import com.unpri.charactermanager.view.MainWindow;
 import java.util.ArrayList;
+import javax.swing.SwingUtilities;
 
 public class Main {
 
@@ -10,105 +12,42 @@ public class Main {
 
         CharacterManager manager = new CharacterManager();
 
-        System.out.println("=== CHARACTER MANAGER TP5 ===");
+        // Tiga karakter dari tugas sebelumnya
+        manager.addCharacter(
+            new Character("Arjuna", CharacterType.WARRIOR, 5)
+        );
 
-        // Menambahkan karakter
-        System.out.println("\n--- Tambah Karakter ---");
+        manager.addCharacter(
+            new Character("Merlin", CharacterType.MAGE, 3)
+        );
 
-        System.out.println(manager.addCharacter(
-                new Character("Arjuna", CharacterType.WARRIOR, 5)));
+        manager.addCharacter(
+            new Character("Athena", CharacterType.ARCHER, 4)
+        );
 
-        System.out.println(manager.addCharacter(
-                new Character("Merlin", CharacterType.MAGE, 3)));
+        // Dua karakter tambahan untuk TP8
+        manager.addCharacter(
+            new Character("Lancelot", CharacterType.WARRIOR, 7)
+        );
 
-        System.out.println(manager.addCharacter(
-                new Character("Athena", CharacterType.ARCHER, 4)));
+        manager.addCharacter(
+            new Character("Freya", CharacterType.HEALER, 6)
+        );
 
-        // Menguji nama duplikat
-        System.out.println("\n--- Uji Duplikat ---");
+        // Mengambil data dari Model
+        ArrayList<Character> characterList =
+            manager.getAllCharacters();
 
-        System.out.println(manager.addCharacter(
-                new Character("Arjuna", CharacterType.HEALER, 1)));
+        double averageLevel =
+            manager.getAverageLevel();
 
-        // Mencari karakter
-        System.out.println("\n--- Pencarian ---");
+        // Menjalankan GUI melalui Event Dispatch Thread
+        SwingUtilities.invokeLater(() -> {
 
-        System.out.println("Merlin: " + manager.findByName("Merlin"));
-        System.out.println("Zeus: " + manager.findByName("Zeus"));
+            MainWindow window =
+                new MainWindow(characterList, averageLevel);
 
-        // Menghapus karakter
-        System.out.println("\n--- Hapus Karakter ---");
-
-        System.out.println("Athena dihapus: "
-                + manager.removeCharacter("Athena"));
-
-        // Menampilkan karakter
-        System.out.println("\n--- Daftar Karakter ---");
-
-        for (Character character : manager.getAllCharacters()) {
-            System.out.println(character);
-        }
-
-        // Total karakter dan rata-rata level
-        System.out.println("\nTotal karakter: "
-                + manager.getTotalCharacters());
-
-        System.out.println("Rata-rata level: "
-                + manager.getAverageLevel());
-
-        // Mini challenge: findByType
-        System.out.println("\n--- Karakter WARRIOR ---");
-
-        ArrayList<Character> warriors =
-                manager.findByType(CharacterType.WARRIOR);
-
-        for (Character character : warriors) {
-            System.out.println(character.getName());
-        }
-
-        // Fitur tambahan countByType
-        System.out.println("\nJumlah WARRIOR: "
-                + manager.countByType(CharacterType.WARRIOR));
-
-        // Uji reference
-        System.out.println("\n--- Uji Reference ---");
-
-        Character asli = manager.findByName("Arjuna");
-        Character referensi = asli;
-
-        referensi.setLevel(99);
-
-        System.out.println("Level asli: " + asli.getLevel());
-        System.out.println("Apakah referensinya sama? "
-                + (asli == referensi));
-
-        // Uji defensive copy
-        System.out.println("\n--- Uji Defensive Copy ---");
-
-        ArrayList<Character> salinan = manager.getAllCharacters();
-
-        salinan.add(new Character(
-                "Hantu", CharacterType.MAGE, 1));
-
-        System.out.println("Jumlah manager: "
-                + manager.getTotalCharacters());
-
-        System.out.println("Jumlah salinan: "
-                + salinan.size());
-
-        // Uji static
-        System.out.println("\nTotal objek yang dibuat: "
-                + Character.getTotalCharacterCreated());
-
-        // Uji equals
-        System.out.println("\n--- Uji Equals ---");
-
-        Character a = new Character(
-                "Arjuna", CharacterType.WARRIOR, 5);
-
-        Character b = new Character(
-                "Arjuna", CharacterType.MAGE, 2);
-
-        System.out.println("Apakah a.equals(b)? " + a.equals(b));
+            window.setVisible(true);
+        });
     }
 }

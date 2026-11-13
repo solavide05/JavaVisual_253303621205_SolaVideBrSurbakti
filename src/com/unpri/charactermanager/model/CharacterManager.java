@@ -5,34 +5,24 @@ import java.util.ArrayList;
 
 public class CharacterManager {
 
-    private final ArrayList<Character> characterList;
+    private final ArrayList<Character> characters;
 
     public CharacterManager() {
-        characterList = new ArrayList<>();
+        characters = new ArrayList<>();
     }
 
-    // Menambahkan karakter tanpa nama duplikat
     public boolean addCharacter(Character character) {
-        if (character == null) {
+        if (characters.contains(character)) {
             return false;
         }
 
-        if (findByName(character.getName()) != null) {
-            return false;
-        }
-
-        characterList.add(character);
+        characters.add(character);
         return true;
     }
 
-    // Mencari karakter berdasarkan nama
     public Character findByName(String name) {
-        if (name == null) {
-            return null;
-        }
-
-        for (Character character : characterList) {
-            if (name.equals(character.getName())) {
+        for (Character character : characters) {
+            if (character.getName().equalsIgnoreCase(name)) {
                 return character;
             }
         }
@@ -40,71 +30,36 @@ public class CharacterManager {
         return null;
     }
 
-    // Menghapus karakter
     public boolean removeCharacter(String name) {
         Character character = findByName(name);
 
-        if (character == null) {
-            return false;
+        if (character != null) {
+            characters.remove(character);
+            return true;
         }
 
-        return characterList.remove(character);
+        return false;
     }
 
-    // Menghitung total karakter
     public int getTotalCharacters() {
-        return characterList.size();
+        return characters.size();
     }
 
-    // Mengembalikan defensive copy
     public ArrayList<Character> getAllCharacters() {
-        return new ArrayList<>(characterList);
+        return new ArrayList<>(characters);
     }
 
-    // Mini challenge: rata-rata level
     public double getAverageLevel() {
-        if (characterList.isEmpty()) {
+        if (characters.isEmpty()) {
             return 0;
         }
 
         int total = 0;
 
-        for (Character character : characterList) {
+        for (Character character : characters) {
             total += character.getLevel();
         }
 
-        return (double) total / characterList.size();
-    }
-
-    // Mini challenge: mencari berdasarkan tipe
-    public ArrayList<Character> findByType(CharacterType type) {
-        ArrayList<Character> result = new ArrayList<>();
-
-        for (Character character : characterList) {
-            if (character.getType() == type) {
-                result.add(character);
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * Menghitung jumlah karakter berdasarkan tipe.
-     * Fitur tambahan untuk membantu analisis karakter.
-     *
-     * @param type tipe karakter yang akan dihitung
-     * @return jumlah karakter dengan tipe tersebut
-     */
-    public int countByType(CharacterType type) {
-        int count = 0;
-
-        for (Character character : characterList) {
-            if (character.getType() == type) {
-                count++;
-            }
-        }
-
-        return count;
+        return (double) total / characters.size();
     }
 }

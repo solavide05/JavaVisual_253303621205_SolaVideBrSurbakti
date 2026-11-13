@@ -131,3 +131,57 @@ Dokumen analisis TP5/AP6 berisi pembahasan mengenai:
 **Link Google Docs:**
 
 [https://docs.google.com/document/d/1OR8Iw0I7PfjQT95g8IR0lSJ3PPqhL6cYVMWz4BBr2Ic/edit?usp=sharing]
+
+## TP8 – AP10: Character Manager Sprint #3
+
+**Nama:** Sola Vide Br Surbakti  
+**NIM:** 253303621205  
+**Program Studi:** Sistem Informasi  
+**Universitas:** Universitas Prima Indonesia (UNPRI)  
+**Mata Kuliah:** Java Visual  
+**Tahun:** 2026
+
+### 1. Deskripsi Tugas
+
+Pada TP8 ini, proyek Character Manager dikembangkan dengan menambahkan tampilan GUI (Graphical User Interface) menggunakan Java Swing. Program menampilkan daftar karakter secara dinamis dan menghitung rata-rata level karakter.
+
+### 2. Fitur yang Dibuat
+
+- Menampilkan daftar karakter menggunakan `JFrame` dan `JPanel`.
+- Menampilkan data karakter secara dinamis menggunakan perulangan.
+- Menampilkan nama, tipe, level, HP, dan Attack Power.
+- Menghitung dan menampilkan rata-rata level karakter.
+- Menggunakan `SwingUtilities.invokeLater()` untuk menjalankan GUI pada Event Dispatch Thread.
+- Memisahkan Model dan View sesuai konsep MVC.
+
+### 3. Karakter yang Ditambahkan
+
+| Bagian | Sebelum TP8 | Sesudah TP8 |
+| --- | --- | --- |
+| Tampilan | Console | GUI Swing |
+| Jumlah karakter | 3 | 5 |
+| Tampilan data | Teks console | JLabel |
+| Statistik | Console | Rata-rata level |
+
+**Jumlah karakter:** 5  
+**Rata-rata level:** 5.0
+
+### 4. Screenshot Program
+
+### Screenshot Sebelum TP8
+
+Tambahkan screenshot `![alt text](image-1.png)` di bagian ini.
+
+### Screenshot Sesudah TP8
+
+Tambahkan screenshot `![alt text](image.png)` di bagian ini.
+
+### 5. Alur Program dan Konsep MVC
+
+Program dimulai dari `Main.java` yang membuat objek `CharacterManager` dan menambahkan data karakter. Selanjutnya, `CharacterManager` mengelola data karakter dan menyediakan daftar karakter serta rata-rata level. Data tersebut kemudian dikirim ke `MainWindow` untuk ditampilkan menggunakan Java Swing. Dengan demikian, Model bertugas mengelola data, sedangkan View bertugas menampilkan data kepada pengguna.
+
+### 6. Google Docs
+
+Link dokumentasi analisis TP8:
+
+**[https://docs.google.com/document/d/1ct5SbuOqSsYrn_hertWTJ1UMrrBfuYeYlrg1OF0CHOM/edit?usp=sharing]**
